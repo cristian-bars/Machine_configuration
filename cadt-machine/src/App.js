@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Setouts from './components/Setouts';
+import Designs from './components/Designs';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Navigation />
+      <div>
+        <Switch>
+          <Route exact path="/" component={Designs} />
+          <Route path="/designs" component={Designs} />
+          <Route path="/setouts" component={Setouts} />
+        </Switch>
+      </div>
+
+    </main>
   );
 }
 
