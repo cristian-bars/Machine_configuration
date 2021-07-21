@@ -10,6 +10,13 @@ function ElementsList({ component }) {
     const year = date.slice(0, 4);
     return `${day}/${month}/${year}`;
   }
+
+  function initials(name) {
+    const separate = name.split('');
+    const initial = `${separate[0].charAt(0)}${separate[0].charAt(0)}`;
+    return initial;
+  }
+
   return (
     <ul>
       <li className="elementItem">
@@ -70,7 +77,11 @@ function ElementsList({ component }) {
                   {showDate(item.updated)}
                 </div>
                 <div className="itemDetail">
-                  {item.user_id_last_update}
+                  {item.user_id_last_update === 1 ? (
+                    initials(data.users[0].name)
+                  ) : (
+                    initials(data.users[1].name)
+                  )}
                 </div>
               </>
             ) : (
