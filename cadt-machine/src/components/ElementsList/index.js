@@ -19,7 +19,7 @@ function ElementsList({ component }) {
 
   return (
     <ul>
-      <li className="elementItem">
+      <li className="elementTitle">
         {component === 'designs' ? (
           <>
             <div className="itemDetail">
@@ -60,7 +60,7 @@ function ElementsList({ component }) {
 
       </li>
       {
-        data[component].map((item) => (
+        data[component].slice(0, 4).map((item) => (
           <li className="elementItem" key={item.id}>
             {component === 'designs' ? (
               <>
@@ -77,11 +77,13 @@ function ElementsList({ component }) {
                   {showDate(item.updated)}
                 </div>
                 <div className="itemDetail">
-                  {item.user_id_last_update === 1 ? (
-                    initials(data.users[0].name)
-                  ) : (
-                    initials(data.users[1].name)
-                  )}
+                  <div className="userName">
+                    {item.user_id_last_update === 1 ? (
+                      initials(data.users[0].name)
+                    ) : (
+                      initials(data.users[1].name)
+                    )}
+                  </div>
                 </div>
               </>
             ) : (
